@@ -1,28 +1,24 @@
-package com.limamed.bra.models;
+package com.limamed.bra.dtos;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-@Entity
-public class PacienteModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@NoArgsConstructor
+@AllArgsConstructor
+public class PacienteDTO {
+
     private Long id;
-    @Column
     private String nome;
-    @Column(unique = true)
     private String cpf;
-    @Column
     private String telefone;
-    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datanascimento;
-    @Column
     private String CEP;
+
+
 }

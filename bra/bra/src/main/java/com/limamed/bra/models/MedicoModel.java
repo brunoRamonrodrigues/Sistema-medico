@@ -1,15 +1,32 @@
 package com.limamed.bra.models;
 
 import lombok.*;
+import jakarta.persistence.*;
 
-@Getter
-@Setter
+import java.time.LocalDateTime;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Entity
 public class MedicoModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String nome;
+
+    @Column(unique = true)
     private String cpf;
-    private String idade;
+
+    @Column
+    private LocalDateTime datanascimento;
+
+    @Column
     private String telefone;
+
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
 }

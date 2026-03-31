@@ -1,9 +1,12 @@
 package com.limamed.bra.controllers;
 
+import com.limamed.bra.dtos.PacienteDto;
 import com.limamed.bra.services.PacienteService;
-import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+@Controller
 public class PacienteController {
 
     private PacienteService pacienteService;
@@ -12,9 +15,13 @@ public class PacienteController {
         this.pacienteService = pacienteService;
     }
 
+
     //Cadastrar Usuario
     @PostMapping("/usuario")
-    public String cadastrar(){
+    public String cadastrar(PacienteDto dados){
+
+
+
         return "quero dormir";
     }
 

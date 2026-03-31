@@ -1,6 +1,5 @@
 package com.limamed.bra.dtos;
 
-import com.limamed.bra.models.Especialidade;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,17 +10,15 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicoDTO {
+public class PacienteDto {
 
     private Long id;
     private String nome;
     private String cpf;
+    private String telefone;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datanascimento;
-    private String telefone;
-    private Especialidade especialidade;
-
-
+    private String CEP;
 
 
 }

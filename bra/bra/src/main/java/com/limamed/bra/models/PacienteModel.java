@@ -1,9 +1,7 @@
 package com.limamed.bra.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Entity
+@Table
 public class PacienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +24,5 @@ public class PacienteModel {
     private LocalDateTime datanascimento;
     @Column
     private String CEP;
+
 }

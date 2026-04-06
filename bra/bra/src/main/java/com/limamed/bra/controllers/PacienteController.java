@@ -2,7 +2,12 @@ package com.limamed.bra.controllers;
 
 import com.limamed.bra.dtos.PacienteDto;
 import com.limamed.bra.services.PacienteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -16,21 +21,31 @@ public class PacienteController {
     }
 
 
-    //Cadastrar Usuario
-    @PostMapping("/usuario")
-    public String cadastrar(PacienteDto dados){
+    //Cadastrar Paciente
+    @PostMapping("/paciente")
+    public String cadastrar(@ModelAttribute("pacienteDto") PacienteDto dados, Model model){
 
+        pacienteService.criarPaciente(dados);
 
-
-        return "quero dormir";
+        return "redirect:/pacientelista";
     }
 
+    //Edita Paciente
+    @PostMapping("/paciente/{id}")
+    public String atualizar(@ModelAttribute("pacienteDto") PacienteDto dados, Model model, @PathVariable Long id){
 
+        pacienteService.atualizarPaciente(id,dados);
 
-    //Edita Usuario
+        return "redirect:/pacientelista";
+    }
 
-    //Lista Usuario
+    //Excluir Paciente
+    @DeleteMapping("/paciente/{id}")
+    public ResponseEntity<Boolean> excluir(@PathVariable Long id){
 
-    //Excluir Usuario
+        pacienteService.excluirPaciente(id);
+
+        return ResponseEntity.ok(true);
+    }
 
 }

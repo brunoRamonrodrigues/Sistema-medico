@@ -53,6 +53,43 @@ public class PacienteService {
         return pacienteListaDto;
     }
 
+    //Lista por ID
+    public PacienteDto listaPaciente(Long id){
+        Optional<PacienteModel> pacienteOP = pacienteRepository.findById(id);
+
+        if (pacienteOP.isEmpty()){
+            return null;
+        }
+        PacienteDto pacienteDto = new PacienteDto();
+
+        pacienteDto.setId(pacienteOP.get().getId());
+        pacienteDto.setCEP(pacienteOP.get().getCEP());
+        pacienteDto.setDatanascimento(pacienteOP.get().getDatanascimento());
+        pacienteDto.setCpf(pacienteOP.get().getCpf());
+        pacienteDto.setNome(pacienteOP.get().getNome());
+
+        return pacienteDto;
+    }
+
+    //Atualizar
+    public Boolean atualizarPaciente(Long id, PacienteDto dados){
+        Optional<PacienteModel> pacienteOP = pacienteRepository.findById(id);
+
+        if (pacienteOP.isEmpty()){
+            return false;
+        }
+
+        PacienteModel paciente = pacienteOP.get();
+
+        paciente.setNome(dados.getNome());
+        paciente.setCpf(dados.getCpf());
+        paciente.setTelefone(dados.getTelefone());
+        paciente.setDatanascimento(dados.getDatanascimento());
+
+        pacienteRepository.save(paciente);
+        return true;
+    }
+
     //Delete
     public Boolean excluirPaciente(Long id){
 
@@ -63,7 +100,4 @@ public class PacienteService {
         pacienteRepository.delete(pacienteOp.get());
         return true;
     }
-
-
-
 }

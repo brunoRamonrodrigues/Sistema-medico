@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
-    @Autowired
+
     private UsuarioService usuarioService;
+
+    public LoginController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     @GetMapping("/login")
     public String viewLogin(Model model){

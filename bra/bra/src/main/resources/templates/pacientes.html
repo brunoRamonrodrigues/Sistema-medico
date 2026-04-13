@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>LimaMedic - Pacientes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: #f4f7fb;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        background: #00bcd4;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .menu a {
+        margin-left: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .menu a:hover {
+        opacity: 0.8;
+    }
+
+    /* CONTAINER */
+    .container {
+        padding: 40px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .title {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        background: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background: #0097a7;
+    }
+
+    /* CARD */
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow-x: auto;
+    }
+
+    /* TABELA */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background: #00bcd4;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #eee;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    tbody tr:hover {
+        background: #f1fafd;
+    }
+
+    th {
+        font-weight: 500;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">LimaMedic</div>
+
+  <div class="menu">
+    <a th:href="@{/agenda}">Agenda</a>
+    <a th:href="@{/pacientes}">Pacientes</a>
+    <a th:href="@{/logout}">Logout</a>
+  </div>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="container">
+
+  <div class="header">
+    <div class="title">Lista de Pacientes</div>
+
+    <a th:href="@{/pacientes/novo}" class="btn">
+      Cadastrar paciente
+    </a>
+  </div>
+
+  <div class="card">
+
+    <table>
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data de Nascimento</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.nome}"></td>
+        <td th:text="${paciente.cpf}"></td>
+        <td th:text="${paciente.dataNascimento}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+</body>
+</html>

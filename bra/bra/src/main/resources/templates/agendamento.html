@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>LimaMedic - Agendamento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: #f4f7fb;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        background: #00bcd4;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .menu a {
+        margin-left: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .menu a:hover {
+        opacity: 0.8;
+    }
+
+    /* CONTAINER */
+    .container {
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .title {
+        font-size: 22px;
+        margin-bottom: 25px;
+        color: #333;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: #444;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    select:focus, input:focus {
+        border-color: #00bcd4;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #0097a7;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">LimaMedic</div>
+
+  <div class="menu">
+    <a th:href="@{/agenda}">Agenda</a>
+    <a th:href="@{/pacientes}">Pacientes</a>
+    <a th:href="@{/logout}">Logout</a>
+  </div>
+</div>
+
+<!-- FORMULÁRIO -->
+<div class="container">
+
+  <div class="form-card">
+
+    <div class="title">Agendar Consulta</div>
+
+    <form th:action="@{/agenda/salvar}" method="post">
+
+      <!-- MÉDICO -->
+      <div class="form-group">
+        <label>Médico</label>
+        <select name="medicoId" required>
+          <option value="">Selecione um médico</option>
+          <option th:each="medico : ${medicos}"
+                  th:value="${medico.id}"
+                  th:text="${medico.nome}">
+          </option>
+        </select>
+      </div>
+
+      <!-- PACIENTE -->
+      <div class="form-group">
+        <label>Paciente</label>
+        <select name="pacienteId" required>
+          <option value="">Selecione um paciente</option>
+          <option th:each="paciente : ${pacientes}"
+                  th:value="${paciente.id}"
+                  th:text="${paciente.nome}">
+          </option>
+        </select>
+      </div>
+
+      <!-- DATA -->
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" name="data" required>
+      </div>
+
+      <!-- HORA -->
+      <div class="form-group">
+        <label>Hora</label>
+        <input type="time" name="hora" required>
+      </div>
+
+      <button type="submit" class="btn">Agendar</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+</body>
+</html>

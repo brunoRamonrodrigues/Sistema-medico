@@ -18,7 +18,7 @@ public class PacienteDto {
     private String telefone;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime datanascimento;
-    private String CEP;
+    private String cep;
 
 
 }

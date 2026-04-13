@@ -11,7 +11,6 @@ import java.time.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
 public class ConsultaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

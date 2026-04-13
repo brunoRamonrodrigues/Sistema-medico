@@ -39,7 +39,7 @@ public class PacienteController {
         return "redirect:/pacientelista";
     }
 
-    //Excluir Paciente
+    //Excluir Pacie         nte
     @DeleteMapping("/paciente/{id}")
     public ResponseEntity<Boolean> excluir(@PathVariable Long id){
 

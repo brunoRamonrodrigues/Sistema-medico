@@ -22,7 +22,7 @@ public class PacienteService {
     public Boolean criarPaciente(PacienteDto dados){
         PacienteModel pacienteModel = new PacienteModel();
 
-        pacienteModel.setCEP(dados.getCEP());
+        pacienteModel.setCEP(dados.getCep());
         pacienteModel.setNome(dados.getNome());
         pacienteModel.setCpf(dados.getCpf());
         pacienteModel.setTelefone(dados.getTelefone());
@@ -41,7 +41,7 @@ public class PacienteService {
         for (PacienteModel pacienteModel : pacienteLista){
             PacienteDto pacienteDto = new PacienteDto();
 
-            pacienteDto.setCEP(pacienteModel.getCEP());
+            pacienteDto.setCep(pacienteModel.getCEP());
             pacienteDto.setNome(pacienteModel.getNome());
             pacienteDto.setCpf(pacienteModel.getCpf());
             pacienteDto.setTelefone(pacienteModel.getTelefone());
@@ -63,7 +63,7 @@ public class PacienteService {
         PacienteDto pacienteDto = new PacienteDto();
 
         pacienteDto.setId(pacienteOP.get().getId());
-        pacienteDto.setCEP(pacienteOP.get().getCEP());
+        pacienteDto.setCep(pacienteOP.get().getCEP());
         pacienteDto.setDatanascimento(pacienteOP.get().getDatanascimento());
         pacienteDto.setCpf(pacienteOP.get().getCpf());
         pacienteDto.setNome(pacienteOP.get().getNome());

@@ -34,7 +34,7 @@ public class LoginController {
                              Model model) {
 
         if(email.equals("admin@email.com") && senha.equals("123")) {
-            return "redirect:/dashboard";
+            return "redirect:/home";
         }
 
         model.addAttribute("erro", "Email ou senha inválidos!");
